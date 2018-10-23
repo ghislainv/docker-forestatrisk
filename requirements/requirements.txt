@@ -1,0 +1,8 @@
+scipy
+patsy
+pandas
+psutil
+matplotlib
+statsmodels
+sklearn
+virtualenv
