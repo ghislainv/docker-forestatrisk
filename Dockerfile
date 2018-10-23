@@ -25,11 +25,11 @@ RUN apt-get autoremove -y \
 
 # Install python packages with pip
 ADD /requirements/ /tmp/requirements/
-RUN pip install --upgrade pip \
-    && pip install -r /tmp/requirements/pre-requirements.txt \
-    && pip install -r /tmp/requirements/requirements.txt \
-    && pip install --upgrade https://github.com/ghislainv/forestatrisk/archive/master.zip
-#RUN pip install -r /tmp/requirements/additional-reqs.txt
+RUN pip3 install --upgrade pip \
+    && pip3 install -r /tmp/requirements/pre-requirements.txt \
+    && pip3 install -r /tmp/requirements/requirements.txt \
+    && pip3 install --upgrade https://github.com/ghislainv/forestatrisk/archive/master.zip
+#RUN pip3 install -r /tmp/requirements/additional-reqs.txt
 
 # R packages (including reticulate)
 RUN install2.r --repos ${CRAN_MIRROR} \
