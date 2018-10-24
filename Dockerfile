@@ -6,7 +6,7 @@ FROM rocker/rstudio:latest
 MAINTAINER Ghislain Vieilledent <ghislain.vieilledent@cirad.fr>
 
 # CRAN mirror
-ENV CRAN_MIRROR http://cran.mirror.ac.za/
+ENV CRAN_MIRROR https://ftp.igh.cnrs.fr/pub/CRAN/
 
 # Terminal
 ENV TERM=xterm
@@ -25,14 +25,14 @@ RUN apt-get autoremove -y \
 
 # Install python packages with pip
 ADD /requirements/ /tmp/requirements/
-RUN pip3 install --upgrade pip \
-    && pip3 install -r /tmp/requirements/pre-requirements.txt \
+RUN pip3 install -r /tmp/requirements/pre-requirements.txt \
     && pip3 install -r /tmp/requirements/requirements.txt \
     && pip3 install --upgrade https://github.com/ghislainv/forestatrisk/archive/master.zip
 #RUN pip3 install -r /tmp/requirements/additional-reqs.txt
 
 # R packages (including reticulate)
-RUN install2.r --repos ${CRAN_MIRROR} \
+RUN install2.r -e -s -r ${CRAN_MIRROR} \
+    rmarkdown \
 		knitr \
 		reticulate \
 		glue \
@@ -43,9 +43,8 @@ RUN install2.r --repos ${CRAN_MIRROR} \
 		rasterVis \
 		rgdal \
 		coda \
-		scales \
-		grid
-
+		scales
+		
 # Run rocker/rstudio init
 CMD ["/init"]
 

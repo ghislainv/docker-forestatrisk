@@ -32,3 +32,5 @@ wget
 nano
 osmctools
 unzip
+pandoc
+pandoc-citeproc
