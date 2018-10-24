@@ -8,13 +8,9 @@ MAINTAINER Ghislain Vieilledent <ghislain.vieilledent@cirad.fr>
 # CRAN mirror
 ENV CRAN_MIRROR https://ftp.igh.cnrs.fr/pub/CRAN/
 
-# Terminal
-ENV TERM=xterm
-ENV LC_ALL C.UTF-8
-
 # Install debian packages with apt-get
 ADD apt-packages.txt /tmp/apt-packages.txt
-RUN apt-get update \
+RUN apt-get update --fix-missing \
     && apt-get upgrade -y \
     && apt-get dist-upgrade -y \
     && xargs -a /tmp/apt-packages.txt apt-get install -y
