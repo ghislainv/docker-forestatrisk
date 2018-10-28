@@ -28,8 +28,12 @@ RUN pip3 install -r /tmp/requirements/pre-requirements.txt \
 
 # R packages (including reticulate)
 RUN install2.r -e -s -r ${CRAN_MIRROR} \
-    rmarkdown \
+                rmarkdown \
 		knitr \
+		caTools \
+		bitops \
+		leaflet \
+		mapview \
 		reticulate \
 		glue \
 		curl \
