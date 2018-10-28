@@ -17,6 +17,8 @@ libreadline7
 libreadline-dev
 libgdal20
 libgdal-dev
+libudunits2-dev
+libcairo2-dev
 build-essential
 curl
 libfreetype6
